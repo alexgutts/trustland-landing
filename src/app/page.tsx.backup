@@ -1,0 +1,792 @@
+'use client';
+
+import { useState } from 'react';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import Image from 'next/image';
+
+export default function TrustLandPage() {
+  const [language, setLanguage] = useState<'en' | 'es'>('en');
+  const { scrollYProgress } = useScroll();
+
+  // Parallax effects
+  const heroY = useTransform(scrollYProgress, [0, 0.5], [0, 200]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+  const heroScale = useTransform(scrollYProgress, [0, 0.3], [1, 1.1]);
+
+  // Smooth spring animations
+  const smoothY = useSpring(heroY, { stiffness: 50, damping: 20 });
+
+  const content = {
+    en: {
+      nav: {
+        forInvestors: 'Investors',
+        forAgents: 'Agents',
+        about: 'Mérida',
+      },
+      hero: {
+        badge: '🛡️ Certified Platform',
+        title: 'Invest in Mérida',
+        titleHighlight: 'with Complete Trust',
+        subtitle: 'Verified agents. Transparent ratings. Zero fraud.',
+        ctaInvestor: 'Start Investing',
+        ctaAgent: 'Become Agent',
+        scroll: 'Scroll to explore',
+      },
+      stats: {
+        safety: { value: '#2', label: 'Safest in N.A.', desc: 'CEOWORLD Ranking' },
+        growth: { value: '15.6%', label: 'Annual Growth', desc: 'Property Value' },
+        crime: { value: '2.5', label: 'Crime Rate', desc: 'Per 100k residents' },
+      },
+      trust: {
+        badge: 'Zero Fraud',
+        title: 'Every Agent Certified',
+        description: 'Nadia Gaytan personally verifies credentials, transaction history, and client satisfaction.',
+        certificationTitle: 'Rigorous Verification',
+        certificationSteps: [
+          'Government credentials verified',
+          'Transaction history audited',
+          'Client satisfaction ratings reviewed',
+          'Ongoing performance monitoring',
+        ],
+        ratingTitle: '5-Star Rating System',
+        ratingDescription: 'Like Airbnb for real estate. Every review verified by our team.',
+      },
+      merida: {
+        badge: 'La Ciudad Blanca',
+        title: 'Why Mérida?',
+        subtitle: 'The fastest-growing real estate market in Latin America',
+        reasons: [
+          { title: 'Safest in Mexico', subtitle: '100 crimes/100k vs 632 avg', icon: 'shield', stat: '98%' },
+          { title: 'Property Boom', subtitle: '+36.3% in 2 years', icon: 'chart', stat: '15.6%' },
+          { title: 'No Fideicomiso', subtitle: 'Save 1-2% upfront', icon: 'bank', stat: '2%' },
+          { title: 'Infrastructure', subtitle: 'Maya Train + Ie-Tram', icon: 'train', stat: '$8B' },
+          { title: 'Cultural Heritage', subtitle: 'UNESCO World Heritage', icon: 'culture', stat: '400+' },
+          { title: '#1 Quality of Life', subtitle: 'UN-Habitat ranked', icon: 'star', stat: '100' },
+        ],
+      },
+      certifier: {
+        badge: 'Your Certification Expert',
+        name: 'Nadia Gaytan',
+        title: 'Lead Advisor & Certifier',
+        bio: 'Personally verifies every agent on TrustLand, ensuring rigorous standards for transparency, professionalism, and client satisfaction.',
+        credentials: [
+          'Licensed Real Estate Professional',
+          'ORVE Group Senior Advisor',
+          'International Investment Specialist',
+          '500+ Successful Transactions',
+        ],
+      },
+      agents: {
+        title: 'Featured Certified Agents',
+        subtitle: 'Verified by Nadia Gaytan',
+        viewAll: 'View All Agents',
+      },
+      howItWorks: {
+        title: 'How It Works',
+        investor: {
+          title: 'For Investors',
+          steps: [
+            { title: 'Browse Certified Agents', description: 'View ratings, reviews, and complete transaction history' },
+            { title: 'Connect Safely', description: 'All communication through verified platform' },
+            { title: 'Complete Investment', description: 'Expert oversight from Nadia Gaytan' },
+            { title: 'Leave Review', description: 'Help future investors with honest feedback' },
+          ],
+        },
+        agent: {
+          title: 'For Agents',
+          steps: [
+            { title: 'Apply for Certification', description: 'Submit credentials and history' },
+            { title: 'Pass Verification', description: 'Nadia Gaytan reviews qualifications' },
+            { title: 'Build Your Reputation', description: 'Earn 5-star ratings from clients' },
+            { title: 'Grow Your Business', description: 'Access international investors' },
+          ],
+        },
+      },
+      cta: {
+        investor: {
+          title: 'Ready to Invest?',
+          subtitle: 'Join international investors',
+          button: 'Get Started',
+          namePlaceholder: 'Your Name',
+          emailPlaceholder: 'Your Email',
+        },
+        agent: {
+          title: 'Join Our Network?',
+          subtitle: 'Access serious buyers',
+          button: 'Apply Now',
+          namePlaceholder: 'Your Name',
+          emailPlaceholder: 'Your Email',
+        },
+      },
+      footer: {
+        tagline: 'Transparent. Verified. Trustworthy.',
+        copyright: '© 2026 TrustLand',
+      },
+    },
+    es: {
+      nav: {
+        forInvestors: 'Inversores',
+        forAgents: 'Asesores',
+        about: 'Mérida',
+      },
+      hero: {
+        badge: '🛡️ Plataforma Certificada',
+        title: 'Invierte en Mérida',
+        titleHighlight: 'con Total Confianza',
+        subtitle: 'Agentes verificados. Ratings transparentes. Cero fraudes.',
+        ctaInvestor: 'Comenzar',
+        ctaAgent: 'Ser Asesor',
+        scroll: 'Desliza para explorar',
+      },
+      stats: {
+        safety: { value: '#2', label: 'Más Segura N.A.', desc: 'Ranking CEOWORLD' },
+        growth: { value: '15.6%', label: 'Crecimiento Anual', desc: 'Valor Propiedades' },
+        crime: { value: '2.5', label: 'Tasa Criminal', desc: 'Por 100k residentes' },
+      },
+      trust: {
+        badge: 'Cero Fraudes',
+        title: 'Cada Asesor Certificado',
+        description: 'Nadia Gaytan verifica personalmente credenciales, historial y satisfacción.',
+        certificationTitle: 'Verificación Rigurosa',
+        certificationSteps: [
+          'Credenciales gubernamentales verificadas',
+          'Historial de transacciones auditado',
+          'Calificaciones de satisfacción revisadas',
+          'Monitoreo continuo de desempeño',
+        ],
+        ratingTitle: 'Sistema 5 Estrellas',
+        ratingDescription: 'Como Airbnb para bienes raíces. Cada review verificada por nuestro equipo.',
+      },
+      merida: {
+        badge: 'La Ciudad Blanca',
+        title: '¿Por Qué Mérida?',
+        subtitle: 'El mercado inmobiliario de más rápido crecimiento en Latinoamérica',
+        reasons: [
+          { title: 'Más Segura México', subtitle: '100 crímenes/100k vs 632', icon: 'shield', stat: '98%' },
+          { title: 'Boom Inmobiliario', subtitle: '+36.3% en 2 años', icon: 'chart', stat: '15.6%' },
+          { title: 'Sin Fideicomiso', subtitle: 'Ahorra 1-2% inicial', icon: 'bank', stat: '2%' },
+          { title: 'Infraestructura', subtitle: 'Tren Maya + Ie-Tram', icon: 'train', stat: '$8B' },
+          { title: 'Patrimonio Cultural', subtitle: 'UNESCO Patrimonio Mundial', icon: 'culture', stat: '400+' },
+          { title: '#1 Calidad Vida', subtitle: 'Ranking UN-Habitat', icon: 'star', stat: '100' },
+        ],
+      },
+      certifier: {
+        badge: 'Tu Experta en Certificación',
+        name: 'Nadia Gaytan',
+        title: 'Asesora Principal y Certificadora',
+        bio: 'Verifica personalmente cada asesor en TrustLand, asegurando estándares rigurosos de transparencia, profesionalismo y satisfacción del cliente.',
+        credentials: [
+          'Profesional Inmobiliaria Licenciada',
+          'Asesora Senior Grupo ORVE',
+          'Especialista Inversión Internacional',
+          '500+ Transacciones Exitosas',
+        ],
+      },
+      agents: {
+        title: 'Asesores Certificados Destacados',
+        subtitle: 'Verificados por Nadia Gaytan',
+        viewAll: 'Ver Todos',
+      },
+      howItWorks: {
+        title: 'Cómo Funciona',
+        investor: {
+          title: 'Para Inversores',
+          steps: [
+            { title: 'Explora Asesores Certificados', description: 'Ve ratings, reseñas e historial completo' },
+            { title: 'Conecta de Forma Segura', description: 'Comunicación por plataforma verificada' },
+            { title: 'Completa tu Inversión', description: 'Supervisión experta de Nadia Gaytan' },
+            { title: 'Deja tu Reseña', description: 'Ayuda a futuros inversores con tu opinión' },
+          ],
+        },
+        agent: {
+          title: 'Para Asesores',
+          steps: [
+            { title: 'Solicita Certificación', description: 'Envía credenciales e historial' },
+            { title: 'Pasa Verificación', description: 'Nadia Gaytan revisa calificaciones' },
+            { title: 'Construye Reputación', description: 'Gana calificaciones 5 estrellas' },
+            { title: 'Crece tu Negocio', description: 'Accede a inversores internacionales' },
+          ],
+        },
+      },
+      cta: {
+        investor: {
+          title: '¿Listo para Invertir?',
+          subtitle: 'Únete a inversores internacionales',
+          button: 'Comenzar',
+          namePlaceholder: 'Tu Nombre',
+          emailPlaceholder: 'Tu Correo',
+        },
+        agent: {
+          title: '¿Unirte a Nuestra Red?',
+          subtitle: 'Accede a compradores serios',
+          button: 'Aplicar',
+          namePlaceholder: 'Tu Nombre',
+          emailPlaceholder: 'Tu Correo',
+        },
+      },
+      footer: {
+        tagline: 'Transparente. Verificado. Confiable.',
+        copyright: '© 2026 TrustLand',
+      },
+    },
+  };
+
+  const t = content[language];
+
+  const mockAgents = [
+    {
+      name: 'Carlos Méndez',
+      rating: 4.9,
+      reviews: 127,
+      transactions: 143,
+      specialties: ['Luxury', 'Beach'],
+      initials: 'CM',
+      color: 'from-blue-400 to-cyan-500',
+      image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop',
+    },
+    {
+      name: 'Sofia Hernández',
+      rating: 5.0,
+      reviews: 89,
+      transactions: 92,
+      specialties: ['Investment', 'Condos'],
+      initials: 'SH',
+      color: 'from-purple-400 to-pink-500',
+      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop',
+    },
+    {
+      name: 'Miguel Ángel Torres',
+      rating: 4.8,
+      reviews: 156,
+      transactions: 168,
+      specialties: ['Commercial', 'Land'],
+      initials: 'MT',
+      color: 'from-orange-400 to-red-500',
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop',
+    },
+    {
+      name: 'Ana Patricia Ruiz',
+      rating: 4.9,
+      reviews: 103,
+      transactions: 109,
+      specialties: ['Colonial', 'Reno'],
+      initials: 'AR',
+      color: 'from-green-400 to-teal-500',
+      image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop',
+    },
+  ];
+
+  return (
+    <div className="min-h-screen bg-white overflow-x-hidden">
+      {/* Floating particles background */}
+      <div className="fixed inset-0 -z-20 overflow-hidden pointer-events-none">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 bg-sky-300/20 rounded-full"
+            animate={{
+              x: [Math.random() * window.innerWidth, Math.random() * window.innerWidth],
+              y: [Math.random() * window.innerHeight, Math.random() * window.innerHeight],
+            }}
+            transition={{
+              duration: Math.random() * 20 + 10,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            style={{
+              left: Math.random() * 100 + '%',
+              top: Math.random() * 100 + '%',
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Language Toggle */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+        className="fixed top-4 right-4 z-50 flex gap-2"
+      >
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => setLanguage('en')}
+          className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all ${
+            language === 'en'
+              ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/50'
+              : 'bg-white/90 text-gray-700 border border-gray-200'
+          }`}
+        >
+          EN
+        </motion.button>
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => setLanguage('es')}
+          className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all ${
+            language === 'es'
+              ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/50'
+              : 'bg-white/90 text-gray-700 border border-gray-200'
+          }`}
+        >
+          ES
+        </motion.button>
+      </motion.div>
+
+      {/* Navigation */}
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ type: "spring", stiffness: 100 }}
+        className="fixed top-0 left-0 right-0 z-40 bg-white/80 backdrop-blur-xl border-b border-sky-100/50"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+          {/* Enhanced Logo */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            whileHover={{ scale: 1.05 }}
+            className="flex items-center gap-2 cursor-pointer"
+          >
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" className="drop-shadow-xl">
+              <defs>
+                <linearGradient id="logo-main-gradient" x1="0" y1="0" x2="40" y2="40">
+                  <stop offset="0%" stopColor="#38bdf8" />
+                  <stop offset="50%" stopColor="#3b82f6" />
+                  <stop offset="100%" stopColor="#2563eb" />
+                </linearGradient>
+                <linearGradient id="logo-accent-gradient" x1="0" y1="0" x2="20" y2="20">
+                  <stop offset="0%" stopColor="#fbbf24" />
+                  <stop offset="100%" stopColor="#f59e0b" />
+                </linearGradient>
+                <filter id="logo-glow">
+                  <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                  <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+
+              {/* Background circle with glow */}
+              <circle cx="20" cy="20" r="18" fill="url(#logo-main-gradient)" filter="url(#logo-glow)" />
+
+              {/* House structure */}
+              <path
+                d="M20 7 L28 14 V30 H24 V21 H16 V30 H12 V14 L20 7Z"
+                fill="white"
+                fillOpacity="0.95"
+              />
+
+              {/* Roof detail */}
+              <path
+                d="M20 7 L28 14 L26 14 L20 9 L14 14 L12 14 L20 7Z"
+                fill="white"
+                fillOpacity="0.8"
+              />
+
+              {/* Door */}
+              <rect x="18" y="24" width="4" height="6" rx="0.5" fill="url(#logo-main-gradient)" fillOpacity="0.6" />
+
+              {/* Windows */}
+              <rect x="14" y="17" width="3" height="3" rx="0.5" fill="url(#logo-accent-gradient)" fillOpacity="0.8" />
+              <rect x="23" y="17" width="3" height="3" rx="0.5" fill="url(#logo-accent-gradient)" fillOpacity="0.8" />
+
+              {/* Trust badge */}
+              <circle cx="20" cy="12" r="3" fill="url(#logo-accent-gradient)" />
+              <path d="M18.5 12 L19.5 13 L21.5 11" stroke="white" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+
+              {/* Decorative base */}
+              <rect x="11" y="30" width="18" height="1" rx="0.5" fill="white" fillOpacity="0.3" />
+            </svg>
+
+            <div className="flex flex-col">
+              <span className="text-xl font-black bg-gradient-to-r from-sky-600 via-blue-600 to-blue-700 bg-clip-text text-transparent leading-tight">
+                TrustLand
+              </span>
+              <span className="text-[9px] font-bold text-sky-600/70 tracking-wider leading-none">
+                CERTIFIED PLATFORM
+              </span>
+            </div>
+          </motion.div>
+
+          <div className="hidden sm:flex items-center gap-4 md:gap-6">
+            {[
+              { label: t.nav.forInvestors, href: '#investors' },
+              { label: t.nav.forAgents, href: '#agents' },
+              { label: t.nav.about, href: '#merida' },
+            ].map((link, idx) => (
+              <motion.a
+                key={idx}
+                href={link.href}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 * idx }}
+                whileHover={{ scale: 1.05, color: '#0ea5e9' }}
+                className="text-sm font-semibold text-gray-700 transition-colors relative group"
+              >
+                {link.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-sky-500 to-blue-600 group-hover:w-full transition-all duration-300" />
+              </motion.a>
+            ))}
+          </div>
+        </div>
+      </motion.nav>
+
+      {/* Hero Section with Complex Illustration */}
+      <section className="relative pt-20 pb-12 px-4 sm:px-6 min-h-screen flex items-center overflow-hidden">
+        {/* Complex animated background */}
+        <div className="absolute inset-0 -z-10">
+          <motion.div
+            style={{ y: smoothY, opacity: heroOpacity, scale: heroScale }}
+            className="absolute inset-0"
+          >
+            {/* Gradient sky */}
+            <div className="absolute inset-0 bg-gradient-to-b from-sky-100 via-blue-50 to-white" />
+
+            {/* Animated sun rays */}
+            {[...Array(8)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute top-0 left-1/2 w-1 origin-top"
+                style={{
+                  height: '40%',
+                  background: 'linear-gradient(180deg, rgba(251,191,36,0.1) 0%, transparent 100%)',
+                  transform: `rotate(${i * 45}deg)`,
+                }}
+                animate={{
+                  opacity: [0.3, 0.6, 0.3],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  delay: i * 0.5,
+                }}
+              />
+            ))}
+
+            {/* Animated clouds with more detail */}
+            {[
+              { x: [0, 50, 0], y: 80, width: 180, delay: 0 },
+              { x: [0, -60, 0], y: 140, width: 220, delay: 2 },
+              { x: [0, 40, 0], y: 200, width: 160, delay: 4 },
+            ].map((cloud, idx) => (
+              <motion.div
+                key={idx}
+                animate={{ x: cloud.x }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear", delay: cloud.delay }}
+                className="absolute"
+                style={{ top: cloud.y, left: '10%' }}
+              >
+                <svg width={cloud.width} height="60" viewBox="0 0 200 60" fill="none">
+                  <ellipse cx="50" cy="35" rx="35" ry="25" fill="white" fillOpacity="0.4" />
+                  <ellipse cx="100" cy="30" rx="50" ry="30" fill="white" fillOpacity="0.5" />
+                  <ellipse cx="150" cy="35" rx="35" ry="25" fill="white" fillOpacity="0.4" />
+                  <ellipse cx="75" cy="25" rx="30" ry="20" fill="white" fillOpacity="0.6" />
+                  <ellipse cx="125" cy="25" rx="30" ry="20" fill="white" fillOpacity="0.6" />
+                </svg>
+              </motion.div>
+            ))}
+
+            {/* Complex city illustration */}
+            <svg
+              className="absolute bottom-0 right-0 w-full h-auto max-w-2xl lg:max-w-4xl opacity-15"
+              viewBox="0 0 1000 700"
+              fill="none"
+            >
+              {/* Mountains in background */}
+              <path d="M0 450 L150 250 L300 380 L450 200 L600 350 L750 180 L900 320 L1000 280 L1000 700 L0 700 Z" fill="url(#mountain-gradient-1)" />
+              <path d="M100 480 L250 300 L400 420 L550 250 L700 400 L850 230 L1000 350 L1000 700 L100 700 Z" fill="url(#mountain-gradient-2)" />
+
+              {/* Buildings - complex architecture */}
+              <g opacity="0.9">
+                {/* Tall building left */}
+                <rect x="50" y="300" width="100" height="400" fill="#1e40af" />
+                <rect x="60" y="310" width="80" height="380" fill="#1e3a8a" />
+                {[...Array(15)].map((_, i) => (
+                  <g key={i}>
+                    <rect x="70" y={320 + i * 25} width="15" height="18" fill="#93c5fd" fillOpacity="0.6" />
+                    <rect x="95" y={320 + i * 25} width="15" height="18" fill="#93c5fd" fillOpacity="0.6" />
+                    <rect x="120" y={320 + i * 25} width="15" height="18" fill="#93c5fd" fillOpacity="0.6" />
+                  </g>
+                ))}
+
+                {/* Mid building */}
+                <rect x="200" y="380" width="120" height="320" fill="#2563eb" />
+                <rect x="210" y="390" width="100" height="300" fill="#1e40af" />
+                {[...Array(12)].map((_, i) => (
+                  <g key={i}>
+                    <rect x="220" y={400 + i * 25} width="18" height="18" fill="#bfdbfe" fillOpacity="0.7" />
+                    <rect x="248" y={400 + i * 25} width="18" height="18" fill="#bfdbfe" fillOpacity="0.7" />
+                    <rect x="276" y={400 + i * 25} width="18" height="18" fill="#bfdbfe" fillOpacity="0.7" />
+                  </g>
+                ))}
+
+                {/* Tall building right */}
+                <rect x="370" y="250" width="110" height="450" fill="#1e3a8a" />
+                <rect x="380" y="260" width="90" height="430" fill="#1e40af" />
+                <polygon points="425,250 380,260 470,260" fill="#0c4a6e" />
+                {[...Array(18)].map((_, i) => (
+                  <g key={i}>
+                    <rect x="390" y={270 + i * 24} width="16" height="18" fill="#60a5fa" fillOpacity="0.8" />
+                    <rect x="416" y={270 + i * 24} width="16" height="18" fill="#60a5fa" fillOpacity="0.8" />
+                    <rect x="442" y={270 + i * 24} width="16" height="18" fill="#60a5fa" fillOpacity="0.8" />
+                  </g>
+                ))}
+
+                {/* Small buildings */}
+                <rect x="520" y="450" width="80" height="250" fill="#3b82f6" />
+                <rect x="530" y="460" width="60" height="230" fill="#2563eb" />
+                {[...Array(9)].map((_, i) => (
+                  <g key={i}>
+                    <rect x="540" y={470 + i * 25} width="18" height="18" fill="#93c5fd" fillOpacity="0.6" />
+                    <rect x="562" y={470 + i * 25} width="18" height="18" fill="#93c5fd" fillOpacity="0.6" />
+                  </g>
+                ))}
+              </g>
+
+              {/* Animated birds */}
+              {[...Array(6)].map((_, i) => (
+                <motion.path
+                  key={i}
+                  d={`M${150 + i * 80} ${180 + i * 30} Q${155 + i * 80} ${175 + i * 30} ${160 + i * 80} ${180 + i * 30}`}
+                  stroke="#64748b"
+                  strokeWidth="3"
+                  fill="none"
+                  animate={{
+                    x: [0, 100, 200],
+                    y: [0, -20, 0],
+                  }}
+                  transition={{
+                    duration: 8 + i,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: i * 0.5,
+                  }}
+                />
+              ))}
+
+              {/* Sun with glow */}
+              <circle cx="200" cy="150" r="60" fill="#fbbf24" opacity="0.6" />
+              <circle cx="190" cy="140" r="60" fill="#fef3c7" opacity="0.4" />
+              <circle cx="185" cy="135" r="50" fill="#fde047" opacity="0.8" />
+
+              <defs>
+                <linearGradient id="mountain-gradient-1" x1="0" y1="200" x2="1000" y2="700">
+                  <stop offset="0" stopColor="#93c5fd" stopOpacity="0.3" />
+                  <stop offset="1" stopColor="#3b82f6" stopOpacity="0.5" />
+                </linearGradient>
+                <linearGradient id="mountain-gradient-2" x1="0" y1="250" x2="1000" y2="700">
+                  <stop offset="0" stopColor="#60a5fa" stopOpacity="0.2" />
+                  <stop offset="1" stopColor="#2563eb" stopOpacity="0.4" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </motion.div>
+        </div>
+
+        {/* Hero content */}
+        <div className="max-w-7xl mx-auto relative z-10 w-full">
+          <div className="grid lg:grid-cols-2 gap-8 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="max-w-2xl"
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2 }}
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-100/90 backdrop-blur-sm border border-sky-200 mb-4 shadow-lg"
+              >
+                <motion.span
+                  animate={{ rotate: [0, 10, -10, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="text-xs font-bold text-sky-700"
+                >
+                  {t.hero.badge}
+                </motion.span>
+              </motion.div>
+
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black mb-4 leading-tight">
+                <motion.span
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="text-gray-900 block"
+                >
+                  {t.hero.title}
+                </motion.span>
+                <motion.span
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="bg-gradient-to-r from-sky-500 via-blue-500 to-blue-600 bg-clip-text text-transparent block"
+                >
+                  {t.hero.titleHighlight}
+                </motion.span>
+              </h1>
+
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.7 }}
+                className="text-base sm:text-lg text-gray-600 mb-8 leading-relaxed max-w-xl"
+              >
+                {t.hero.subtitle}
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9 }}
+                className="flex flex-col sm:flex-row gap-3"
+              >
+                <motion.button
+                  whileHover={{ scale: 1.05, boxShadow: '0 20px 60px rgba(56,189,248,0.4)' }}
+                  whileTap={{ scale: 0.95 }}
+                  className="group px-8 py-4 bg-gradient-to-r from-sky-500 via-blue-500 to-blue-600 text-white rounded-2xl font-bold text-sm shadow-xl shadow-sky-500/30 relative overflow-hidden"
+                >
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-blue-600 to-sky-500"
+                    initial={{ x: '-100%' }}
+                    whileHover={{ x: '0%' }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    {t.hero.ctaInvestor}
+                    <motion.span
+                      animate={{ x: [0, 5, 0] }}
+                      transition={{ duration: 1.5, repeat: Infinity }}
+                    >
+                      →
+                    </motion.span>
+                  </span>
+                </motion.button>
+
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 bg-white/90 backdrop-blur-md text-sky-600 rounded-2xl font-bold text-sm border-2 border-sky-200 hover:border-sky-400 transition-all shadow-lg"
+                >
+                  {t.hero.ctaAgent}
+                </motion.button>
+              </motion.div>
+
+              {/* Scroll indicator */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.5 }}
+                className="mt-16 flex items-center gap-3 text-xs text-gray-500"
+              >
+                <motion.div
+                  animate={{ y: [0, 8, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                  className="w-6 h-10 border-2 border-sky-400 rounded-full flex items-start justify-center p-2"
+                >
+                  <motion.div
+                    animate={{ y: [0, 12, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                    className="w-1.5 h-1.5 bg-sky-500 rounded-full"
+                  />
+                </motion.div>
+                <span>{t.hero.scroll}</span>
+              </motion.div>
+            </motion.div>
+
+            {/* Hero image */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="relative hidden lg:block"
+            >
+              <div className="relative w-full h-[600px] rounded-3xl overflow-hidden shadow-2xl">
+                <Image
+                  src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&h=1600&fit=crop"
+                  alt="Mérida Architecture"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-sky-900/60 to-transparent" />
+
+                {/* Floating stats on image */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1 }}
+                  className="absolute bottom-8 left-8 right-8 p-6 rounded-2xl bg-white/90 backdrop-blur-xl border border-white/50 shadow-2xl"
+                >
+                  <div className="grid grid-cols-3 gap-4">
+                    {[
+                      { value: '500+', label: language === 'en' ? 'Properties' : 'Propiedades' },
+                      { value: '#2', label: language === 'en' ? 'Safest' : 'Más Segura' },
+                      { value: '15.6%', label: language === 'en' ? 'Growth' : 'Crecimiento' },
+                    ].map((stat, idx) => (
+                      <div key={idx} className="text-center">
+                        <div className="text-2xl font-black bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text text-transparent">
+                          {stat.value}
+                        </div>
+                        <div className="text-xs font-semibold text-gray-600">{stat.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section - Enhanced */}
+      <section className="py-12 px-4 sm:px-6 bg-gradient-to-br from-sky-50 via-blue-50 to-white relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-sky-200/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid grid-cols-3 gap-3 sm:gap-6">
+            {[t.stats.safety, t.stats.growth, t.stats.crime].map((stat, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="relative group p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/80 backdrop-blur-xl border-2 border-sky-100 hover:border-sky-300 transition-all hover:shadow-2xl hover:shadow-sky-500/20"
+              >
+                <motion.div
+                  className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-sky-500/0 to-blue-500/0 group-hover:from-sky-500/10 group-hover:to-blue-500/10 transition-all"
+                  layoutId={`stat-bg-${idx}`}
+                />
+
+                <div className="relative">
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ delay: idx * 0.1 + 0.3, type: "spring" }}
+                    className="text-3xl sm:text-5xl font-black bg-gradient-to-br from-sky-600 to-blue-600 bg-clip-text text-transparent mb-1 sm:mb-2"
+                  >
+                    {stat.value}
+                  </motion.div>
+                  <div className="text-xs sm:text-base font-black text-gray-900 mb-1">{stat.label}</div>
+                  <div className="text-[10px] sm:text-xs text-gray-500">{stat.desc}</div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Continue with other sections... Due to length, I'll create a second message with the rest */}
+      {/* Trust, Mérida, Certifier, Agents sections will follow the same enhanced pattern */}
+
+      {/* Placeholder for continuation - will add in next update */}
+    </div>
+  );
+}
