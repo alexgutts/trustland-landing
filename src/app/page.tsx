@@ -739,11 +739,10 @@ export default function TrustLandPage() {
             {[t.stats.safety, t.stats.growth, t.stats.crime].map((stat, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                whileHover={{ y: -8, scale: 1.02 }}
                 className="relative p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/80 backdrop-blur-xl border-2 border-sky-100 hover:border-sky-300 transition-all hover:shadow-2xl hover:shadow-sky-500/20"
               >
                 <div className="text-3xl sm:text-5xl font-black bg-gradient-to-br from-sky-600 to-blue-600 bg-clip-text text-transparent mb-1 sm:mb-2">
@@ -801,11 +800,10 @@ export default function TrustLandPage() {
             {t.merida.reasons.map((reason, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                whileHover={{ y: -4, scale: 1.02 }}
                 className="p-6 rounded-3xl bg-white border-2 border-gray-200 hover:border-sky-300 hover:shadow-xl transition-all"
               >
                 <div className="text-4xl mb-3">{reason.icon === 'shield' ? '🛡️' : reason.icon === 'chart' ? '📈' : reason.icon === 'bank' ? '🏛️' : reason.icon === 'train' ? '🚄' : reason.icon === 'culture' ? '🎭' : '⭐'}</div>
@@ -829,11 +827,10 @@ export default function TrustLandPage() {
             {mockAgents.map((agent, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                whileHover={{ y: -4, scale: 1.02 }}
                 className="p-5 rounded-3xl bg-white border-2 border-gray-200 hover:border-sky-300 hover:shadow-xl transition-all"
               >
                 <div className="relative w-20 h-20 mx-auto mb-4 rounded-2xl overflow-hidden">
@@ -882,8 +879,8 @@ export default function TrustLandPage() {
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             className="text-center mb-10"
           >
@@ -894,8 +891,8 @@ export default function TrustLandPage() {
           {/* The Problem */}
           <div className="mb-12">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               className="mb-8"
             >
@@ -909,8 +906,8 @@ export default function TrustLandPage() {
               {t.investing.problem.stats.map((stat, idx) => (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
                   className="p-6 rounded-2xl bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-100"
@@ -939,8 +936,8 @@ export default function TrustLandPage() {
           {/* The Solution */}
           <div className="mb-12">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               className="mb-8"
             >
@@ -954,11 +951,10 @@ export default function TrustLandPage() {
               {t.investing.solution.features.map((feature, idx) => (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  whileHover={{ y: -4, scale: 1.02 }}
                   className="p-6 rounded-2xl bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 hover:border-green-300 hover:shadow-xl transition-all"
                 >
                   <div className="text-3xl mb-3">{feature.icon}</div>
@@ -972,8 +968,8 @@ export default function TrustLandPage() {
           {/* How It Works */}
           <div>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               className="text-center mb-8"
             >
@@ -988,8 +984,8 @@ export default function TrustLandPage() {
                 {t.investing.howItWorks.steps.map((step, idx) => (
                   <motion.div
                     key={idx}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: idx * 0.1 }}
                     className="relative flex gap-4 items-start"
@@ -1014,8 +1010,8 @@ export default function TrustLandPage() {
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             className="text-center mb-10"
           >
@@ -1026,8 +1022,8 @@ export default function TrustLandPage() {
           {/* The Challenge */}
           <div className="mb-12">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               className="mb-8"
             >
@@ -1041,8 +1037,8 @@ export default function TrustLandPage() {
               {t.agent.problem.stats.map((stat, idx) => (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
                   className="p-6 rounded-2xl bg-gradient-to-br from-orange-50 to-amber-50 border-2 border-orange-100"
@@ -1057,8 +1053,8 @@ export default function TrustLandPage() {
           {/* Why Join */}
           <div className="mb-12">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               className="mb-8"
             >
@@ -1072,11 +1068,10 @@ export default function TrustLandPage() {
               {t.agent.solution.features.map((feature, idx) => (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  whileHover={{ y: -4, scale: 1.02 }}
                   className="p-6 rounded-2xl bg-white border-2 border-blue-200 hover:border-blue-300 hover:shadow-xl transition-all"
                 >
                   <div className="text-3xl mb-3">{feature.icon}</div>
@@ -1090,8 +1085,8 @@ export default function TrustLandPage() {
           {/* Requirements */}
           <div className="mb-12">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               className="mb-8"
             >
@@ -1102,8 +1097,8 @@ export default function TrustLandPage() {
               {t.agent.requirements.items.map((item, idx) => (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.05 }}
                   className="flex items-start gap-3 p-4 rounded-xl bg-white border border-blue-100"
@@ -1119,8 +1114,8 @@ export default function TrustLandPage() {
 
           {/* Pricing */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             className="max-w-2xl mx-auto"
           >
@@ -1218,8 +1213,8 @@ export default function TrustLandPage() {
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             className="text-center mb-10"
           >
@@ -1232,8 +1227,8 @@ export default function TrustLandPage() {
 
           {/* Nadia's Profile Card */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             className="max-w-5xl mx-auto mb-10"
           >
@@ -1292,8 +1287,8 @@ export default function TrustLandPage() {
 
           {/* Client Reviews */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             className="mb-8"
           >
@@ -1306,11 +1301,10 @@ export default function TrustLandPage() {
             {t.testimonials.reviews.map((review, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                whileHover={{ y: -4, scale: 1.02 }}
                 className="p-6 rounded-2xl bg-white border-2 border-blue-100 hover:border-blue-300 hover:shadow-xl transition-all"
               >
                 {/* Stars */}
@@ -1350,8 +1344,8 @@ export default function TrustLandPage() {
 
           {/* Trust Statement */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             className="mt-16 text-center max-w-3xl mx-auto"
           >
