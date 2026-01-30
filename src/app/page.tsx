@@ -693,9 +693,11 @@ export default function TrustLandPage() {
                 <Image
                   src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&h=1600&fit=crop"
                   alt="Mérida Architecture"
-                  fill
-                  className="object-cover"
+                  width={1200}
+                  height={1600}
+                  className="object-cover w-full h-full"
                   priority
+                  unoptimized
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-sky-900/60 to-transparent" />
 
@@ -770,8 +772,10 @@ export default function TrustLandPage() {
             <Image
               src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&h=600&fit=crop"
               alt="Office"
-              fill
-              className="object-cover"
+              width={1600}
+              height={600}
+              className="object-cover w-full h-full"
+              unoptimized
             />
             <div className="absolute inset-0 bg-gradient-to-r from-sky-900/80 to-blue-900/60 flex items-center justify-center">
               <div className="text-center text-white">
@@ -836,8 +840,10 @@ export default function TrustLandPage() {
                   <Image
                     src={agent.image}
                     alt={agent.name}
-                    fill
-                    className="object-cover"
+                    width={400}
+                    height={400}
+                    className="object-cover w-full h-full"
+                    unoptimized
                   />
                 </div>
 
@@ -1242,8 +1248,9 @@ export default function TrustLandPage() {
                     <Image
                       src="/images/nadia-gaytan.svg"
                       alt="Nadia Gaytan - Chief Certification Officer"
-                      fill
-                      className="object-cover"
+                      width={256}
+                      height={192}
+                      className="object-cover w-full h-full"
                     />
                   </div>
                   {/* Trust Badge Overlay */}
